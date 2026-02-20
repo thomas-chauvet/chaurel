@@ -1,0 +1,222 @@
+/* ============================================
+   Chaurel.ch Styles
+   Mobile-first, accessible, dark mode support
+   ============================================ */
+
+/* Custom Properties */
+:root {
+    /* Colors - Light Mode */
+    --color-bg: #fafafa;
+    --color-surface: #ffffff;
+    --color-text: #1a1a1a;
+    --color-text-muted: #666666;
+    --color-accent: #2563eb;
+    --color-accent-hover: #1d4ed8;
+    --color-border: rgba(0, 0, 0, 0.08);
+    --color-shadow: rgba(0, 0, 0, 0.06);
+
+    /* Spacing */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+
+    /* Typography */
+    --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.25rem;
+    --font-size-xl: 1.5rem;
+    --font-size-2xl: 2rem;
+
+    /* Layout */
+    --max-width: 800px;
+    --card-radius: 12px;
+    --transition-fast: 150ms ease;
+    --transition-normal: 250ms ease;
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-bg: #0a0a0a;
+        --color-surface: #171717;
+        --color-text: #fafafa;
+        --color-text-muted: #a3a3a3;
+        --color-accent: #60a5fa;
+        --color-accent-hover: #93c5fd;
+        --color-border: rgba(255, 255, 255, 0.1);
+        --color-shadow: rgba(0, 0, 0, 0.3);
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Reset & Base */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Main Layout */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--space-lg);
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+/* Header */
+.site-header {
+    text-align: center;
+    padding: var(--space-xl) 0;
+}
+
+.site-header h1 {
+    font-size: var(--font-size-2xl);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+/* Profiles Section */
+.profiles {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    width: 100%;
+    padding: var(--space-md) 0;
+}
+
+/* Card Component */
+.card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--card-radius);
+    padding: var(--space-lg);
+    box-shadow: 0 4px 12px var(--color-shadow);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px var(--color-shadow);
+}
+
+.card h2 {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+}
+
+.card .role {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-md);
+}
+
+.card .description {
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-lg);
+}
+
+/* Links */
+.links {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+}
+
+.links a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 500;
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: 6px;
+    transition: color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.links a:hover {
+    color: var(--color-accent-hover);
+    background-color: var(--color-border);
+}
+
+.links a:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+/* Footer */
+.site-footer {
+    margin-top: auto;
+    padding: var(--space-xl) 0 var(--space-md);
+    text-align: center;
+}
+
+.site-footer p {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+}
+
+/* Tablet and up */
+@media (min-width: 640px) {
+    main {
+        padding: var(--space-xl);
+    }
+
+    .site-header {
+        padding: var(--space-2xl) 0;
+    }
+
+    .profiles {
+        flex-direction: row;
+        gap: var(--space-xl);
+    }
+
+    .card {
+        flex: 1;
+        padding: var(--space-xl);
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .site-header h1 {
+        font-size: calc(var(--font-size-2xl) * 1.25);
+    }
+}
