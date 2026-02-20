@@ -129,4 +129,4 @@ For stronger privacy, consider:
 
 ## License
 
-Private repository. All rights reserved.
+MIT License
